@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -8,7 +8,8 @@ export default {
         green: '#97ce4c',
         yellow: '#f0e14a',
         peach: '#e4a788',
-        brown: '#44281d',
+        primary: '#24282F',
+        accent: '#3C3E44',
       },
     },
   },
