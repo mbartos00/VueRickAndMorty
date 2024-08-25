@@ -1,5 +1,5 @@
-<script setup lang="ts"></script>
-
 <template>
-  <h1>hello</h1>
+  <main>
+    <RouterView />
+  </main>
 </template>
