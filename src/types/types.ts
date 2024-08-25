@@ -2,7 +2,7 @@ export type Character = {
   id: number;
   name: string;
   status: string;
-  species: string;
+  species: Species;
   type: string;
   gender: string;
   origin: {
@@ -18,6 +18,12 @@ export type Character = {
   url: string;
   created: string;
 };
+
+export enum Species {
+  'alive' = 'alive',
+  'dead' = 'alive',
+  'unknown' = 'alive',
+}
 
 export type PaginationInfo = {
   count: number;
