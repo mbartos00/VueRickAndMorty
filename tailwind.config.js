@@ -11,6 +11,9 @@ export default {
         primary: '#24282F',
         accent: '#3C3E44',
       },
+      backgroundImage: {
+        'home-background': "url('./assets/background.png')",
+      },
     },
   },
   plugins: [],

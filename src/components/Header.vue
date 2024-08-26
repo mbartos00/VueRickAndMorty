@@ -1,6 +1,7 @@
 <template>
   <header class="bg-peach px-6 py-4 flex justify-between">
     <div class="flex gap-2">
+      <RouterLink to="/" active-class="text-white" class="hover:text-white">Home</RouterLink>
       <RouterLink to="/characters" active-class="text-white" class="hover:text-white"
         >Characters</RouterLink
       >
