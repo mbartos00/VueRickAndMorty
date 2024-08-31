@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia';
-import { getAllCharacters, getCharacter } from '../api/api';
+import { getAllCharacters, getCharacter, getEpisodeName } from '../api/api';
 import { Character, PaginationInfo, Species } from '../types/types';
 
 interface CharacterStoreState {
   characters: Character[];
   character: Character | null;
   paginationInfo: PaginationInfo | null;
+  episodeName: string | null;
   loading: boolean;
   error: string | null;
 }
@@ -50,6 +51,7 @@ export const useCharacterStore = defineStore('characterStore', {
   state: (): CharacterStoreState => ({
     characters: [],
     character: null,
+    episodeName: null,
     paginationInfo: null,
     loading: false,
     error: null,
@@ -89,6 +91,8 @@ export const useCharacterStore = defineStore('characterStore', {
       try {
         const response = await getCharacter(id);
         this.character = response;
+        const episode = response.episode[0];
+        this.episodeName = await getEpisodeName(episode);
       } catch (error: any) {
         console.error('Error fetching character:', error);
         this.error = error.response.data.error || 'Failed to fetch character';

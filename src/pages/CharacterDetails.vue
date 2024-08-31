@@ -6,7 +6,7 @@
         <h2 class="text-3xl">{{ character?.name }}</h2>
         <p class="font-semibold">{{ character?.species }} - {{ character?.status }}</p>
         <p>Last known location: {{ character?.location.name }}</p>
-        <p>First seen in: {{ character?.episode[0] }}</p>
+        <p>First seen in: {{ episodeName }}</p>
         <button
           class="mt-4 px-4 py-2 w-fit bg-accent text-white rounded transition-all duration-150 hover:bg-green hover:text-accent"
           @click="toggleFavourite()"
@@ -29,6 +29,7 @@ const store = useCharacterStore();
 const { isFavourite, addFavourite, removeFavourite } = useFavouritesStore();
 
 const character = computed(() => store.character);
+const episodeName = computed(() => store.episodeName);
 const error = computed(() => store.error);
 
 onMounted(() => {

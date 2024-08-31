@@ -31,3 +31,12 @@ export const getCharacter = async (id: number): Promise<Character> => {
     throw error;
   }
 };
+
+export const getEpisodeName = async (url: string): Promise<string> => {
+  try {
+    const response = await api.get(url);
+    return response.data.name;
+  } catch (error) {
+    throw error;
+  }
+};
