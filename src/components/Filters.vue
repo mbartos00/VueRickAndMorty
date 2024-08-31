@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-accent py-6 px-8 flex gap-6">
+  <div class="bg-accent py-6 px-8 flex gap-6 flex-wrap">
     <FilterRadioButtons />
     <Searchbar />
     <button type="reset" class="bg-peach px-4 text-accent rounded-r-sm" @click="resetFilters">
