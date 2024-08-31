@@ -27,12 +27,17 @@ const props = defineProps<{ pagination: PaginationInfo }>();
 const route = useRoute();
 const router = useRouter();
 
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 const handleNextPage = () => {
   if (Number(route.query.page) === props.pagination.pages) return;
   router.push({
     path: 'characters',
     query: { page: Number(route.query.page || 1) + 1 },
   });
+  scrollToTop();
 };
 const handlePreviousPage = () => {
   if (Number(route.query.page) === 1) return;
@@ -41,5 +46,6 @@ const handlePreviousPage = () => {
     path: 'characters',
     query: { page: Number(route.query.page) - 1 },
   });
+  scrollToTop();
 };
 </script>

@@ -11,14 +11,15 @@
 <script setup lang="ts">
 import Searchbar from './Searchbar.vue';
 import FilterRadioButtons from './FilterRadioButtons.vue';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const router = useRouter();
+const route = useRoute();
 
 const resetFilters = () => {
   router.push({
     path: 'characters',
-    query: {},
+    query: { page: route.query.page },
   });
 };
 </script>
