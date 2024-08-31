@@ -88,10 +88,10 @@ export const useCharacterStore = defineStore('characterStore', {
       this.error = null;
       try {
         const response = await getCharacter(id);
-        this.character = response.results;
+        this.character = response;
       } catch (error: any) {
         console.error('Error fetching character:', error);
-        this.error = error.message || 'Failed to fetch character';
+        this.error = error.response.data.error || 'Failed to fetch character';
       } finally {
         this.loading = false;
       }

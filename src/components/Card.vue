@@ -1,5 +1,8 @@
 <template>
-  <div class="bg-pink w-full rounded-lg shadow-lg p-6 text-center">
+  <RouterLink
+    :to="'characters/' + character.id"
+    class="bg-pink w-full rounded-lg shadow-lg p-6 text-center"
+  >
     <img :src="character.image" alt="Character Image" class="w-full h-auto rounded-lg mb-4" />
     <div class="space-y-2">
       <h2 class="text-xl font-semibold">{{ character.name }}</h2>
@@ -14,12 +17,11 @@
     >
       {{ isFav ? 'Remove from favourites' : 'Add to favourites' }}
     </button>
-  </div>
+  </RouterLink>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { defineProps } from 'vue';
 import { Character } from '../types/types';
 import { useFavouritesStore } from '../store/store';
 

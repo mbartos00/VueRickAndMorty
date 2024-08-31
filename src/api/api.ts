@@ -23,10 +23,10 @@ export const getAllCharacters = async (
   }
 };
 
-export const getCharacter = async (id: number): Promise<{ results: Character }> => {
+export const getCharacter = async (id: number): Promise<Character> => {
   try {
     const response = await api.get(`/character/${id}`);
-    return response.data as { results: Character };
+    return response.data;
   } catch (error) {
     throw error;
   }
