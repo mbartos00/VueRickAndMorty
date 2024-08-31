@@ -77,7 +77,7 @@ export const useCharacterStore = defineStore('characterStore', {
         this.paginationInfo = response.info;
         this.loading = false;
       } catch (error: any) {
-        this.error = error.message || 'Failed to fetch characters';
+        this.error = error.response.data.error || 'Failed to fetch characters';
       } finally {
         this.loading = false;
       }

@@ -1,10 +1,11 @@
 <template>
   <Filters />
   <div class="p-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <h1 class="text-3xl text-white font-semibold mx-auto w-fit" v-if="error">{{ error }}</h1>
+    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       <Card v-for="character in characters" :key="character.id" :character="character" />
     </div>
-    <Pagination v-if="pagination" :pagination="pagination" />
+    <Pagination v-if="pagination && !error" :pagination="pagination" />
   </div>
 </template>
 
@@ -21,6 +22,7 @@ const route = useRoute();
 
 const pagination = computed(() => store.paginationInfo);
 const characters = computed(() => store.characters);
+const error = computed(() => store.error);
 
 onMounted(() => {
   store.fetchAllCharacters({ ...route.query });
