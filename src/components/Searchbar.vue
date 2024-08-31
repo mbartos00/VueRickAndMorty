@@ -11,17 +11,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
 const router = useRouter();
 const searchbarValue = ref(route.query.name || '');
 
+watch(route, newRoute => {
+  searchbarValue.value = newRoute.query.name?.toString() || '';
+});
+
 const search = () => {
   router.push({
     path: 'characters',
-    query: { name: searchbarValue.value },
+    query: { name: searchbarValue.value, ...route.query },
   });
 };
 </script>

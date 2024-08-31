@@ -1,0 +1,29 @@
+<template>
+  <form class="flex" @change="applyFilters">
+    <RadioButton v-model="specie" value="all" label="All" id="all" name="specie" />
+    <RadioButton v-model="specie" value="human" label="Human" id="human" name="specie" />
+    <RadioButton v-model="specie" value="animal" label="Animal" id="animal" name="specie" />
+    <RadioButton v-model="specie" value="alient" label="Alien" id="alien" name="specie" />
+  </form>
+</template>
+
+<script setup lang="ts">
+import RadioButton from './RadioButton.vue';
+import { ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+
+const route = useRoute();
+const router = useRouter();
+const specie = ref(route.query.specie?.toString() || 'all');
+
+watch(route, newRoute => {
+  specie.value = newRoute.query.specie?.toString() || 'all';
+});
+
+const applyFilters = () => {
+  router.push({
+    path: 'characters',
+    query: { specie: specie.value, ...route.query },
+  });
+};
+</script>
