@@ -17,7 +17,10 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import { useFavouritesStore } from '../store/store';
 
-const { totalFavourites } = useFavouritesStore();
+const store = useFavouritesStore();
+
+const totalFavourites = computed(() => store.totalFavourites);
 </script>
