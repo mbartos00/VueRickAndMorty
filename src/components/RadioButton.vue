@@ -1,5 +1,5 @@
 <template>
-  <label :for="props.id" class="rounded-sm border border-primary">
+  <label :for="props.id" class="rounded-sm border border-primary cursor-pointer">
     <input
       type="radio"
       :name="props.name"

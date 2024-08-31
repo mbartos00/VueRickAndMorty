@@ -1,9 +1,9 @@
 <template>
   <form class="flex" @change="applyFilters">
-    <RadioButton v-model="specie" value="all" label="All" id="all" name="specie" />
+    <RadioButton v-model="specie" value="" label="All" id="all" name="specie" />
     <RadioButton v-model="specie" value="human" label="Human" id="human" name="specie" />
     <RadioButton v-model="specie" value="animal" label="Animal" id="animal" name="specie" />
-    <RadioButton v-model="specie" value="alient" label="Alien" id="alien" name="specie" />
+    <RadioButton v-model="specie" value="alien" label="Alien" id="alien" name="specie" />
   </form>
 </template>
 
@@ -14,16 +14,22 @@ import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
 const router = useRouter();
-const specie = ref(route.query.specie?.toString() || 'all');
+const specie = ref(route.query.species?.toString() || '');
 
-watch(route, newRoute => {
-  specie.value = newRoute.query.specie?.toString() || 'all';
-});
+watch(
+  () => route.query,
+  newQuery => {
+    specie.value = newQuery.species?.toString() || '';
+  }
+);
 
 const applyFilters = () => {
+  const updatedQuery = { ...route.query };
+  updatedQuery.species = specie.value;
+
   router.push({
     path: 'characters',
-    query: { specie: specie.value, ...route.query },
+    query: updatedQuery,
   });
 };
 </script>
