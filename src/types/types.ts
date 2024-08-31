@@ -2,7 +2,7 @@ export type Character = {
   id: number;
   name: string;
   status: Status;
-  species: string;
+  species: Species;
   type: string;
   gender: Gender;
   origin: {
@@ -24,6 +24,9 @@ export enum Status {
   'dead' = 'dead',
   'unknown' = 'unknown',
 }
+
+export type Species = 'all' | 'human' | 'alien' | 'animal';
+
 export enum Gender {
   'female' = 'female',
   'male' = 'male',
