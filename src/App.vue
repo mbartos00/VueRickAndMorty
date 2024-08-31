@@ -6,7 +6,7 @@ import Header from './components/Header.vue';
   <div class="bg-primary w-full min-h-[100svh]">
     <Header />
     <main>
-      <RouterView v-slot="{ Component }">
+      <router-view v-slot="{ Component }">
         <Transition
           enter-active-class="duration-300 ease-out"
           enter-from-class="transform opacity-0 scale-75"
@@ -17,7 +17,7 @@ import Header from './components/Header.vue';
         >
           <component :is="Component" />
         </Transition>
-      </RouterView>
+      </router-view>
     </main>
   </div>
 </template>

@@ -1,31 +1,32 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { Character, PaginationInfo, Species } from '../types/types';
+import removeEmptyProperty from '../utils/removeEmptyProperty';
+
+type Filters = {
+  name?: string;
+  species?: Species;
+  page?: number;
+};
 
 const api = axios.create({
   baseURL: 'https://rickandmortyapi.com/api',
 });
 
-export const getAllCharacters = async ({
-  page = 1,
-  name,
-  species,
-}: {
-  page: number;
-  name: string;
-  species: Species;
-}): Promise<AxiosResponse<PaginationInfo & Character[]>> => {
+export const getAllCharacters = async (
+  params: Filters
+): Promise<{ info: PaginationInfo; results: Character[] }> => {
   try {
-    const response = await api.get('/character', { params: { page, name, species } });
-    return response;
+    const response = await api.get('/character', { params: removeEmptyProperty(params) });
+    return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-export const getCharacter = async ({ id }: { id: number }): Promise<AxiosResponse<Character>> => {
+export const getCharacter = async (id: number): Promise<{ results: Character }> => {
   try {
     const response = await api.get(`/character/${id}`);
-    return response;
+    return response.data as { results: Character };
   } catch (error) {
     throw error;
   }

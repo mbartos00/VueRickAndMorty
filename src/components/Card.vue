@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-pink rounded-lg shadow-lg p-6 max-w-xs text-center">
+  <div class="bg-pink w-full rounded-lg shadow-lg p-6 text-center">
     <img :src="character.image" alt="Character Image" class="w-full h-auto rounded-lg mb-4" />
     <div class="space-y-2">
       <h2 class="text-xl font-semibold">{{ character.name }}</h2>
