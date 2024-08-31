@@ -1,11 +1,13 @@
 <template>
-  <Filters />
-  <div class="p-8">
-    <h1 class="text-3xl text-white font-semibold mx-auto w-fit" v-if="error">{{ error }}</h1>
-    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      <Card v-for="character in characters" :key="character.id" :character="character" />
+  <div>
+    <Filters />
+    <div class="p-8">
+      <h1 class="text-3xl text-white font-semibold mx-auto w-fit" v-if="error">{{ error }}</h1>
+      <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <Card v-for="character in characters" :key="character.id" :character="character" />
+      </div>
+      <Pagination v-if="pagination && !error" :pagination="pagination" />
     </div>
-    <Pagination v-if="pagination && !error" :pagination="pagination" />
   </div>
 </template>
 

@@ -13,7 +13,7 @@
     </div>
     <button
       class="mt-4 px-4 py-2 bg-accent text-white rounded transition-all duration-150 hover:bg-green hover:text-accent"
-      @click="toggleFavourite()"
+      @click.stop.prevent="toggleFavourite()"
     >
       {{ isFav ? 'Remove from favourites' : 'Add to favourites' }}
     </button>

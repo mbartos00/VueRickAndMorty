@@ -15,9 +15,7 @@ import Header from './components/Header.vue';
           leave-from-class="opacity-100 scale-100"
           leave-to-class="transform opacity-0 scale-75"
         >
-          <div :key="route.name">
-            <component :is="Component" />
-          </div>
+          <component :key="route.name" :is="Component" />
         </Transition>
       </router-view>
     </main>
